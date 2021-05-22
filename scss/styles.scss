@@ -340,7 +340,8 @@ footer {
   text-align: center;
 
   h1,
-  h2 {
+  h2,
+  h6 {
     margin: 0;
   }
 
@@ -360,8 +361,9 @@ footer {
     margin-bottom: 25px;
   }
 
-  span {
-    font-size: 0.4em;
+  h6 {
+    color: #fff;
+    font-size: 1em;
   }
 }
 
