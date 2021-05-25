@@ -22,7 +22,7 @@
 */
 
 // Define base and accent colors
-$base-color: #3498db;
+$base-color: #00838f;
 $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
@@ -125,7 +125,6 @@ header {
   left: 0;
   right: 0;
   text-align: center;
-  margin-top: 10px;
   z-index: 10;
 
   ul {
@@ -269,16 +268,19 @@ footer {
 
 .btn-rounded-white {
   display: inline-block;
-  color: #fff;
+  color: $base-color;
   padding: 15px 25px;
-  border: 3px solid #fff;
+  background: #fff;
   border-radius: 30px;
   @include transition();
+  animation: pulse_01 2s ease infinite;
 
   &:hover {
-    color: $base-color;
-    background: #fff;
+    color: #fff;
+    background: $base-color;
+    border: 3px solid $base-color;
     text-decoration: none;
+    animation: none;
   }
 }
 
@@ -329,6 +331,62 @@ footer {
   background-size: cover;
   padding: 15px;
   overflow: hidden;
+
+  .circle {
+    position: absolute;
+    z-index: 1;
+    height: 400px;
+    width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 60px;
+      width: 60px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      left: 30px;
+      top: 30px;
+      transform-origin: 170px 170px;
+      animation: spin_01 10s linear infinite;
+    }
+  }
+
+  .effect-wrap {
+    .effect {
+      position: absolute;
+      z-index: 100;
+    }
+
+    .effect-1 {
+      left: 20%;
+      top: 20%;
+      font-size: 20px;
+      color: #f5ae10;
+      animation: spin_01 5s linear infinite;
+    }
+
+    .effect-2 {
+      right: 5%;
+      top: 10%;
+      font-size: 25px;
+      color: rgba(255, 255, 255, 0.5);
+      animation: spin_01 5s linear infinite;
+    }
+
+    .effect-3 {
+      left: 10%;
+      bottom: 10%;
+      font-size: 25px;
+      color: rgba(255, 255, 255, 0.2);
+      animation: bounceTop_01 3s linear infinite;
+    }
+  }
 }
 
 #lead-content {
@@ -340,8 +398,7 @@ footer {
   text-align: center;
 
   h1,
-  h2,
-  h6 {
+  h2 {
     margin: 0;
   }
 
@@ -359,11 +416,6 @@ footer {
     font-weight: 500;
     font-size: 2.25em;
     margin-bottom: 25px;
-  }
-
-  h6 {
-    color: #fff;
-    font-size: 1em;
   }
 }
 
@@ -396,7 +448,7 @@ footer {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 3px solid lighten($base-color, 25%);
+    // border: 3px solid lighten($base-color, 25%);
   }
 
   i {
@@ -417,6 +469,40 @@ footer {
 
   100% {
     transform: scale(1, 1);
+  }
+}
+
+@keyframes spin_01 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounceTop_01 {
+  0%,
+  100% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse_01 {
+  0% {
+    transform: scale(0.94);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(0.94);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 
@@ -634,6 +720,14 @@ footer {
   overflow: hidden;
   background: #fff;
   border-radius: 4px;
+
+  a {
+    color: $base-color;
+
+    &:hover {
+      color: $base-color-hover;
+    }
+  }
 }
 
 .project-image {
@@ -651,6 +745,7 @@ footer {
     font-size: 1.5em;
     font-weight: 300;
     color: $heading;
+    text-transform: uppercase;
     margin: 0 0 15px 0;
   }
 
@@ -864,6 +959,29 @@ footer {
     min-height: auto;
     max-height: auto;
     padding: 100px 15px;
+
+    .circle {
+      height: 320px;
+      width: 320px;
+
+      &::before {
+        left: 18px;
+        top: 18px;
+        transform-origin: 142px 142px;
+      }
+    }
+
+    .effect-wrap {
+      .effect-1 {
+        left: 10%;
+        top: 30%;
+      }
+
+      .effect-2 {
+        right: 10%;
+        top: 20%;
+      }
+    }
   }
 
   #lead-content {
